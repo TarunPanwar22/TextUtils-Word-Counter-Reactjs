@@ -44,6 +44,26 @@ const handleClearClick = () =>{
 
     }
 
+
+    
+const handleCaptializeClick = () => {
+    let newText = text.charAt(0).toUpperCase() + text.slice(1).toLowerCase()
+    setText(newText);
+  
+  }
+  
+  const handleDownloadClick = () => {
+    const element = document.createElement("a");
+    const file = new Blob(["hello"], {
+      type: "text/plain"
+    });
+    element.href = URL.createObjectURL(file);
+    element.download = "myFile.txt";
+    document.body.appendChild(element);
+    element.click();
+  };
+
+  
     const [text , setText ] = useState('');
     // text = "new text " // Wrong way to change the text 
     // setText("new text ");   // Correct way to Change the state 
@@ -58,7 +78,10 @@ const handleClearClick = () =>{
 <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleLowClick}>Convert to LowerCase </button>
 <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleClearClick}>Convert to Clear</button>
 <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleCopy}>CopyText</button>
-<button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleExtraSpaces}>handleExtraSpaces</button>
+<button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleExtraSpaces}
+>handleExtraSpaces</button>
+<button disabled={text.length===0} className='btn btn-primary mx-1 my-1' onClick={handleCaptializeClick}>Convert to Capitialize</button>
+<button disabled={text.length===0} className='btn btn-primary mx-1 my-1' onClick={handleDownloadClick}>Download Text File</button>
 
 
 
